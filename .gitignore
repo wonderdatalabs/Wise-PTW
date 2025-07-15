@@ -84,7 +84,7 @@ aws/
 awscliv2.zip
 *.zip
 
-# Images and screenshots
+# Images and screenshots (but keep essential assets)
 *.png
 *.jpg
 *.jpeg
@@ -95,13 +95,19 @@ awscliv2.zip
 Captura*.png
 Item_*.png
 item_*.png
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
+!assets/*.gif
+!wise_POC/assets/*.png
 
-# Text output files
+# Text output files (but keep essential prompts)
 *_result.txt
 *_output.txt
 *.txt
 !requirements.txt
 !nginixcongi.txt
+!prompts/*.txt
 
 # JSON results
 *_results.json
