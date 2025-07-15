@@ -1,0 +1,57 @@
+[
+    {
+        "nome": "file_name",
+        "tipo": "selectbox",
+        "label": "Nome do Arquivo",
+        "default": "",
+        "match_type": "value",
+        "campo_qdrant": [
+            "file_name",
+            "structured_data.file_name"
+        ]
+    },
+    {
+        "nome": "main_topics",
+        "tipo": "selectbox",
+        "label": "Tópicos Principais",
+        "default": "",
+        "match_type": "value",
+        "campo_qdrant": [
+            "structured_data.main_topics"
+        ]
+    },
+    {
+        "nome": "departments",
+        "tipo": "selectbox",
+        "label": "Departamento",
+        "default": "",
+        "match_type": "value",
+        "campo_qdrant": [
+            "departments",
+            "structured_data.departments"
+        ]
+    },
+    {
+        "nome": "upload_timestamp",
+        "tipo": "date_range",
+        "label": "Período de Upload",
+        "default": [
+            null,
+            null
+        ],
+        "match_type": "range",
+        "campo_qdrant": [
+            "upload_timestamp"
+        ]
+    },
+    {
+        "nome": "raw_text",
+        "tipo": "text_input",
+        "label": "Busca Livre",
+        "default": "",
+        "match_type": "value",
+        "campo_qdrant": [
+            "raw_text"
+        ]
+    }
+]

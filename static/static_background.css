@@ -1,0 +1,17 @@
+/* Simple static background */
+.stApp {
+    background-image: var(--background-image-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: #f0f2f6;
+    animation: none !important;
+}
+
+/* Override the animation keyframes */
+@keyframes background-logo-float {
+    0%, 100% { 
+        background-position: center center;
+    }
+}

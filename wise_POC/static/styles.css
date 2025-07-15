@@ -1,0 +1,859 @@
+/* Nesse arquivo estão todo css aplicado a imagem de fundo e ao sidebar/barra lateral */
+/* ==========================================================================
+   CONFIGURAÇÕES INICIAIS E RESET
+   ========================================================================== */
+/* Esconder elementos padrão do Streamlit */
+#MainMenu, footer, .stDeployButton, header {
+    visibility: hidden;
+    display: none;
+}
+
+/* ==========================================================================
+   VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
+   ========================================================================== */
+/* Definição das cores e variáveis principais usadas em todo o tema */
+:root {
+    --sidebar-bg-color: #05113b;      /* Cor de fundo da barra lateral */
+    --sidebar-accent-color: #005EF2;  /* Cor de destaque/acento da barra lateral */
+    --sidebar-text-color: #FFFFFF;    /* Cor do texto na barra lateral */
+    --sidebar-highlight: rgba(0, 94, 242, 0.3); /* Cor para efeitos de destaque */
+    --sidebar-shadow: rgba(0, 0, 0, 0.2);       /* Cor para sombras */
+}
+
+/* ==========================================================================
+   DEFINIÇÃO DE ANIMAÇÕES (KEYFRAMES)
+   ========================================================================== */
+/* Animação de ondulação para efeitos líquidos */
+@keyframes liquid-wave { 
+    0% {background-position: 0% 0%} 
+    50% {background-position: 100% 100%} 
+    100% {background-position: 0% 0%} 
+}
+
+/* Animação de pulsação para elementos que precisam de destaque */
+@keyframes pulse {
+    0%, 100% { transform: scale(0.9); filter: drop-shadow(0 0 2px var(--sidebar-highlight)); }
+    50% { transform: scale(1.15); filter: drop-shadow(0 0 12px rgba(0, 94, 242, 0.8)); }
+}
+
+/* Animação de pulsação para sombras */
+@keyframes pulse-shadow {
+    0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.8); }
+    50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.4); }
+}
+
+/* Animação de flutuação para elementos que devem parecer levitando */
+@keyframes float {
+    0%, 100% { transform: perspective(500px) rotateX(5deg) translateY(0px); }
+    50% { transform: perspective(500px) rotateX(3deg) translateY(-5px); }
+}
+
+/* Animação para sombra dos elementos flutuantes */
+@keyframes float-shadow {
+    0%, 100% { opacity: 0.5; width: 180px; }
+    50% { opacity: 0.7; width: 200px; }
+}
+
+/* Animação de brilho para bordas e destaques */
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(0, 94, 242, 0.5), 0 0 10px rgba(0, 94, 242, 0.3); }
+    50% { box-shadow: 0 0 10px rgba(0, 94, 242, 0.8), 0 0 15px rgba(0, 94, 242, 0.5); }
+}
+
+/* Animação de pulsação para elementos ativos */
+@keyframes activePulse {
+    0%, 100% { box-shadow: 0 4px 12px var(--sidebar-shadow), 0 0 5px var(--sidebar-highlight); }
+    50% { box-shadow: 0 4px 12px var(--sidebar-shadow), 0 0 20px rgba(0, 94, 242, 0.5); }
+}
+
+/* Animação de ondas para efeitos decorativos */
+@keyframes wave-animation {
+    0% { transform: translateX(-100%) translateY(0); }
+    50% { transform: translateX(0) translateY(-15px); }
+    100% { transform: translateX(100%) translateY(0); }
+}
+
+/* Animação para fluxo de fundo cósmico */
+@keyframes cosmic-flow {
+    0% { background-position: 0% 0%; filter: brightness(1); }
+    50% { background-position: 100% 50%; filter: brightness(1.3); }
+    100% { background-position: 0% 0%; filter: brightness(1); }
+}
+
+/* Animação para partículas flutuantes */
+@keyframes particle-float {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    50% { transform: translateY(-15px) translateX(20px); opacity: 0.9; }
+}
+
+/* Animação para pulsos de energia */
+@keyframes energy-pulse {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* Animação para linhas de energia na barra lateral */
+/* Controla a largura e opacidade das linhas neon horizontais */
+@keyframes neon-line {
+    0%, 100% { width: 0%; opacity: 0.5; } /* Começa e termina com 0% de largura e 50% de opacidade */
+    50% { width: 100%; opacity: 1; }      /* No ponto médio, expande para largura total e opacidade total */
+}
+
+/* Animação para a imagem de fundo (logo5) */
+/* Esta animação cria um efeito de movimento fluido da imagem de fundo em três dimensões:
+   1. Movimento horizontal: usando valores diferentes para "left"
+   2. Movimento vertical: alternando entre "top", "center", e "bottom"
+   3. Efeito de profundidade: variando o background-size para parecer mais próximo ou distante
+*/
+@keyframes background-logo-float {
+    /* Posição inicial - centralizada e tamanho médio */
+    0% { 
+        background-position: left 300px center; /* Posicionada a 300px da esquerda e centralizada verticalmente */
+        background-size: 80%; /* Tamanho base da imagem */
+    }
+    /* Movimento para direita e topo */
+    5% {
+        background-position: left 160px top 25%; /* Move para a direita (menor valor) e um pouco para cima (25% do topo) */
+        background-size: 78%; /* Ligeiramente menor, simulando afastamento */
+    }
+    /* Posição bem alta */
+    10% { 
+        background-position: left 200px top 10%; /* Menos direita, bem mais para cima (10% do topo) */
+        background-size: 76%; /* Continua diminuindo de tamanho para simular afastamento */
+    }
+    /* Movimento sutil para continuar o fluxo suave */
+    15% {
+        background-position: left 185px top 30%; /* Ligeiramente para direita, descendo um pouco (30% do topo) */
+        background-size: 78%; /* Aumenta ligeiramente - aproximando */
+    }
+    /* Movimento amplo para esquerda e centro vertical */
+    20% { 
+        background-position: left 350px top 50%; /* Bem mais para esquerda, meio da tela verticalmente */
+        background-size: 80%; /* Volta ao tamanho original - efeito de aproximação */
+    }
+    /* Pequena variação de posição */
+    25% {
+        background-position: left 300px top 30%; /* Centraliza mais horizontalmente, mantém acima do centro verticalmente */
+        background-size: 75%; /* Reduz tamanho - afastando */
+    }
+    /* Movimento para a área inferior */
+    30% { 
+        background-position: left 250px bottom 10%; /* Mais para direita, próximo à parte inferior da tela */
+        background-size: 70%; /* Bem menor - simulando distância maior */
+    }
+    /* Transição na parte inferior com aproximação */
+    35% {
+        background-position: left 215px bottom 20%; /* Mais para direita, mantendo-se na parte inferior */
+        background-size: 75%; /* Aumenta tamanho - se aproximando novamente */
+    }
+    /* Transição brusca para cima criando dinamismo */
+    40% { 
+        background-position: left 200px top 30%; /* Mais para direita e para a parte superior */
+        background-size: 70%; /* Reduz tamanho - afastando-se novamente */
+    }
+    /* Movimento sutil preparando para ponto médio */
+    45% {
+        background-position: left 240px top 15%; /* Ajuste suave de posição */
+        background-size: 72.5%; /* Tamanho intermediário para transição suave */
+    }
+    /* Ponto médio da animação - retorno à posição centralizada */
+    50% { 
+        background-position: left 300px center; /* Posição horizontal semelhante ao início, centralizada verticalmente */
+        background-size: 80%; /* Tamanho máximo - mais próximo do usuário */
+    }
+    /* Início do movimento para a parte inferior */
+    55% {
+        background-position: left 260px bottom 30%; /* Mais para direita e parte inferior */
+        background-size: 80%; /* Mantém tamanho grande - ainda próximo */
+    }
+    /* Movimento para extremo inferior */
+    60% { 
+        background-position: left 220px bottom 40%; /* Mais para direita, bem na parte inferior */
+        background-size: 80%; /* Mantém tamanho próximo */
+    }
+    /* Ajuste sutil na parte inferior */
+    65% {
+        background-position: left 245px bottom 45%; /* Ligeira variação de posição, mantendo-se na parte inferior */
+        background-size: 75%; /* Começa a reduzir - afastando-se */
+    }
+    /* Transição brusca para cima com afastamento máximo */
+    70% { 
+        background-position: left 270px top 40%; /* Move para esquerda e para a parte superior */
+        background-size: 60%; /* Tamanho mínimo - ponto de maior distância */
+    }
+    /* Retorno à parte inferior com aproximação */
+    75% {
+        background-position: left 235px bottom 15%; /* Ajuste de posição para inferior */
+        background-size: 72.5%; /* Aumenta tamanho - aproximando-se novamente */
+    }
+    /* Movimento para extremo inferior esquerdo */
+    80% { 
+        background-position: left 200px bottom 25%; /* Bem mais para direita, mantendo-se na parte inferior */
+        background-size: 75%; /* Tamanho intermediário */
+    }
+    /* Transição para parte superior */
+    85% {
+        background-position: left 215px top 15%; /* Move para a parte superior novamente */
+        background-size: 73.5%; /* Ligeira variação de tamanho para transição suave */
+    }
+    /* Pequeno ajuste na parte superior */
+    90% { 
+        background-position: left 230px top 15%; /* Ligeira variação de posição horizontal */
+        background-size: 72%; /* Redução sutil de tamanho */
+    }
+    /* Prepara para retorno à posição inicial */
+    95% {
+        background-position: left 265px top 15%; /* Começa a centralizar horizontalmente */
+        background-size: 76%; /* Aumenta tamanho para transição final */
+    }
+    /* Retorno à posição inicial para loop perfeito */
+    100% { 
+        background-position: left 300px center; /* Mesma posição do início para transição suave */
+        background-size: 80%; /* Retorna ao tamanho inicial */
+    }
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO DA BARRA LATERAL (SIDEBAR)
+   ========================================================================== */
+/* Estilo principal da barra lateral - alvo do componente sidebar do Streamlit */
+[data-testid="stSidebar"] {
+    /* Cor de fundo base da variável CSS */
+    background-color: var(--sidebar-bg-color);
+    
+    /* Múltiplas camadas de fundos para profundidade e interesse visual: */
+    background-image: 
+        /* Camada gradiente superior - cria transição de cor do azul escuro para o azul de destaque */
+        linear-gradient(135deg, rgba(5, 17, 59, 0.9) 0%, rgba(0, 94, 242, 0.3) 100%),
+        /* Primeiro gradiente radial - cria um brilho azul na área superior esquerda */
+        radial-gradient(circle at 20% 30%, rgba(0, 94, 242, 0.6) 0%, rgba(5, 17, 59, 0) 50%),
+        /* Segundo gradiente radial - cria um destaque sutil e quente no canto inferior direito */
+        radial-gradient(circle at 80% 80%, rgba(255, 237, 232, 0.3) 0%, rgba(5, 17, 59, 0) 60%);
+    
+    /* Tamanhos de fundo ampliados para movimento de animação */
+    background-size: 300% 300%, 200% 200%, 200% 200%;
+    
+    /* Habilita posicionamento absoluto de elementos filhos */
+    position: relative;
+    
+    /* Efeito de brilho externo para a barra lateral */
+    box-shadow: 0 0 20px rgba(0, 94, 242, 0.4);
+    
+    /* Garante que elementos decorativos não se estendam além da barra lateral */
+    overflow: hidden;
+    
+    /* Aplica a animação cosmic-flow para movimento de fundo */
+    animation: cosmic-flow 15s infinite alternate;
+}
+
+/* Camada decorativa da sidebar (pseudoelemento :before) */
+[data-testid="stSidebar"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Múltiplos gradientes radiais criam pontos de luz e profundidade */
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(75, 57, 158, 0.616) 0%, rgba(255, 255, 255, 0) 5%),
+        radial-gradient(circle at 75% 35%, rgba(255, 232, 234, 0.9) 0%, rgba(232, 244, 255, 0) 5%),
+        radial-gradient(circle at 15% 55%, rgba(232, 244, 255, 0.9) 0%, rgba(232, 244, 255, 0) 5%),
+        radial-gradient(circle at 65% 65%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 5%);
+    background-size: 200% 200%;
+    z-index: 1;
+    opacity: 0.6;
+    /* Animação de flutuação para as partículas */
+    animation: particle-float 10s infinite ease-in-out;
+}
+
+/* Camada decorativa secundária da sidebar (pseudoelemento :after) */
+[data-testid="stSidebar"]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Padrões decorativos e gradientes para criar profundidade visual */
+    background: 
+        repeating-linear-gradient(45deg, 
+            rgba(0, 94, 242, 0.1) 0%, 
+            rgba(5, 17, 59, 0) 2%, 
+            rgba(232, 244, 255, 0.1) 4%, 
+            rgba(5, 17, 59, 0) 6%,
+            rgba(0, 94, 242, 0.1) 8%),
+        radial-gradient(circle at 30% 20%, rgba(0, 94, 242, 0.6) 0%, transparent 30%),
+        radial-gradient(circle at 70% 60%, rgba(232, 244, 255, 0.4) 0%, transparent 30%);
+    background-size: 300% 300%, 200% 200%, 200% 200%;
+    z-index: 0;
+    /* Animação de fluxo cósmico para movimento suave */
+    animation: cosmic-flow 20s infinite alternate;
+    filter: blur(3px);
+}
+
+/* ==========================================================================
+   ELEMENTOS DECORATIVOS DE ONDA
+   ========================================================================== */
+/* Contentor para os elementos de onda */
+.wave-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none; /* Permite cliques através do elemento */
+}
+
+/* Estilo base para elementos de onda */
+.wave {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background-size: 200% 100%;
+    animation: wave-animation 15s linear infinite;
+    opacity: 0.6;
+    filter: hue-rotate(15deg) brightness(1.2);
+}
+
+/* Variações individuais para cada onda */
+.wave:nth-child(1) {
+    /* SVG para a primeira onda */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath fill='rgba(0, 94, 242, 0.05)' d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25'%3E%3C/path%3E%3C/svg%3E");
+    animation-duration: 10s;
+}
+
+.wave:nth-child(2) {
+    /* SVG para a segunda onda */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath fill='rgba(0, 94, 242, 0.08)' d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z'%3E%3C/path%3E%3C/svg%3E");
+    top: 30%;
+    animation-delay: -3s; /* Defasagem na animação */
+    animation-duration: 13s;
+    opacity: 0.8;
+}
+
+.wave:nth-child(3) {
+    /* SVG para a terceira onda */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath fill='rgba(0, 94, 242, 0.03)' d='M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z'%3E%3C/path%3E%3C/svg%3E");
+    top: 60%;
+    animation-delay: -6s; /* Defasagem na animação */
+    animation-duration: 16s;
+    opacity: 0.7;
+}
+
+/* Ajuste de z-index para o conteúdo da sidebar ficar acima dos elementos decorativos */
+[data-testid="stSidebar"] > div {
+    position: relative;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   ELEMENTOS DECORATIVOS DE ENERGIA
+   ========================================================================== */
+/* Contentor para linhas de energia e orbes */
+.energy-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none; /* Permite cliques através do elemento */
+}
+
+/* Estilo para linhas de energia individuais */
+.energy-line {
+    position: absolute;
+    height: 1px;
+    /* Gradiente horizontal para efeito neon */
+    background: linear-gradient(90deg, rgba(5, 17, 59, 0) 0%, rgba(0, 94, 242, 0.9) 50%, rgba(5, 17, 59, 0) 100%);
+    /* Animação de expansão e contração */
+    animation: neon-line 8s infinite ease-in-out;
+    /* Efeito de brilho para destacar as linhas */
+    box-shadow: 0 0 5px rgba(0, 94, 242, 0.8), 0 0 10px rgba(232, 244, 255, 0.7);
+    opacity: 0.7;
+}
+
+/* Posicionamento individualizado para cada linha de energia */
+.energy-line:nth-child(1) { top: 20%; left: 0; }
+.energy-line:nth-child(2) { top: 40%; right: 0; animation-delay: 2s; }
+.energy-line:nth-child(3) { top: 60%; left: 0; animation-delay: 4s; }
+.energy-line:nth-child(4) { top: 80%; right: 0; animation-delay: 6s; }
+
+/* Estilo para orbes de energia */
+.energy-orb {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    filter: blur(5px);
+    /* Animação de pulsação para os orbes */
+    animation: energy-pulse 10s infinite ease-in-out;
+    z-index: 0;
+}
+
+/* Configuração individualizada para cada orbe de energia */
+.energy-orb:nth-child(1) {
+    top: 15%;
+    left: 10%;
+    /* Gradiente radial para efeito de brilho */
+    background: radial-gradient(circle, rgba(232, 244, 255, 0.8) 0%, rgba(0, 94, 242, 0.6) 50%, rgba(5, 17, 59, 0) 70%);
+}
+
+.energy-orb:nth-child(2) {
+    top: 70%;
+    left: 20%;
+    width: 120px;
+    height: 120px;
+    animation-delay: 3s;
+    /* Gradiente radial com cor diferente */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, rgba(0, 94, 242, 0.5) 50%, rgba(5, 17, 59, 0) 70%);
+}
+
+.energy-orb:nth-child(3) {
+    top: 40%;
+    right: 20%;
+    width: 100px;
+    height: 100px;
+    animation-delay: 6s;
+    /* Gradiente radial com brilho mais intenso */
+    background: radial-gradient(circle, rgba(232, 244, 255, 0.9) 0%, rgba(0, 94, 242, 0.4) 50%, rgba(5, 17, 59, 0) 70%);
+}
+
+/* ==========================================================================
+   ELEMENTOS DE CABEÇALHO E RODAPÉ DA SIDEBAR
+   ========================================================================== */
+/* Estilo para o cabeçalho da barra lateral */
+.sidebar-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px 10px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    /* Linha divisória sutil na parte inferior */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    margin-bottom: 15px !important;
+    /* Fundo escuro com efeito de blur para melhor legibilidade */
+    background: #05113b62 !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+/* Estilo para logo pequeno na barra lateral */
+.sidebar-logo-sm {
+    max-width: 80px;
+    margin: 0 auto;
+    display: block;
+    /* Sombra e efeito de pulsação */
+    filter: drop-shadow(0 0 5px rgba(0, 94, 242, 0.4));
+    animation: pulse 3s ease-in-out infinite;
+    transform-origin: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Efeito de brilho atrás do logo pequeno */
+.sidebar-logo-sm::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%) scale(0.85);
+    /* Gradiente radial para efeito de brilho */
+    background: radial-gradient(circle, rgba(242, 0, 212, 0.3) 0%, rgba(5, 17, 59, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    /* Animação de pulsação para o brilho */
+    animation: pulse-shadow 3s ease-in-out infinite;
+}
+
+/* Estilo para o título da barra lateral */
+.sidebar-title {
+    color: var(--sidebar-text-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    /* Sombra de texto para melhor legibilidade */
+    text-shadow: 0 0 10px rgba(0, 94, 242, 0.4);
+    text-align: center;
+}
+
+/* Estilo para o menu da barra lateral */
+.sidebar-menu {
+    margin-top: 10px;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 5px 10px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Estilo para o rodapé da barra lateral */
+.sidebar-footer {
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    /* Linha divisória sutil na parte superior */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo para logo grande na barra lateral */
+.sidebar-logo-lg {
+    max-width: 250px;
+    height: auto;
+    opacity: 0.9;
+    /* Sombra e efeito de perspectiva 3D */
+    filter: drop-shadow(0 0 5px rgba(0, 94, 242, 0.3));
+    transition: all 0.3s ease;
+    transform: perspective(500px) rotateX(5deg);
+    transform-origin: center bottom;
+    position: relative;
+    z-index: 1;
+    /* Animação de flutuação */
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Efeito hover para o logo grande */
+.sidebar-logo-lg:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(0, 94, 242, 0.7));
+    transform: perspective(500px) rotateX(0deg) scale(1.03);
+}
+
+/* Sombra decorativa abaixo do rodapé */
+.sidebar-footer::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 20px;
+    /* Gradiente radial para simular uma sombra suave */
+    background: radial-gradient(ellipse, rgba(0, 94, 242, 0.2) 0%, rgba(5, 17, 59, 0) 70%);
+    border-radius: 50%;
+    filter: blur(5px);
+    z-index: 0;
+    /* Animação de flutuação para a sombra */
+    animation: float-shadow 6s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO DE BOTÕES DA SIDEBAR
+   ========================================================================== */
+/* Estilo base para todos os botões na barra lateral */
+[data-testid="stSidebar"] button {
+    /* Fundo com transparência e cor base */
+    background: rgba(5, 17, 59, 0.7) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    border: none !important;
+    border-radius: 15px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+    height: 50px;
+    margin-bottom: 5px !important;
+    padding: 5px 10px !important;
+    /* Alinhamento do texto à esquerda */
+    text-align: left !important;
+    justify-content: flex-start !important;
+    position: relative !important;
+    overflow: hidden !important;
+    /* Preserva efeitos 3D */
+    transform-style: preserve-3d !important;
+    /* Transição suave para animações */
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+    /* Sombra e borda sutil */
+    box-shadow: 0 2px 8px var(--sidebar-shadow), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+    border-left: 3px solid transparent !important;
+    /* Efeito de blur para melhor integração visual */
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Efeitos decorativos para botões (pseudoelementos) */
+[data-testid="stSidebar"] button::after,
+[data-testid="stSidebar"] button::before {
+    content: "" !important;
+    position: absolute !important;
+    pointer-events: none !important;
+}
+
+/* Camada de brilho superior */
+[data-testid="stSidebar"] button::after {
+    inset: 0 !important;
+    /* Gradiente para simular reflexo de luz */
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.05) 80%, rgba(255, 255, 255, 0.15) 100%) !important;
+    z-index: 1 !important;
+    transition: all 0.5s ease !important;
+}
+
+/* Efeito de brilho deslizante */
+[data-testid="stSidebar"] button::before {
+    width: 50px !important;
+    height: 200% !important;
+    top: -50% !important;
+    left: -100px !important;
+    /* Gradiente para efeito de brilho que se move */
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), rgba(0, 94, 242, 0.3), rgba(255, 255, 255, 0.1), transparent) !important;
+    transform: rotate(25deg) translateZ(-10px) !important;
+    transform-origin: left center !important;
+    /* Transição suave com curva de aceleração */
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1) !important;
+    z-index: 2 !important;
+    opacity: 0 !important;
+    filter: blur(3px) !important;
+}
+
+/* Estado de hover para botões */
+[data-testid="stSidebar"] button:hover {
+    /* Gradiente de fundo mais destacado */
+    background: linear-gradient(110deg, rgba(0, 94, 242, 0.2) 0%, rgba(0, 65, 170, 0.3) 50%, rgba(5, 17, 59, 0.4) 100%) !important;
+    color: #ffffff !important;
+    /* Efeito de movimento sutil */
+    transform: translateX(5px) translateY(-1px) !important;
+    /* Sombra mais intensa e borda destacada */
+    box-shadow: 0 5px 15px var(--sidebar-shadow), 0 0 10px var(--sidebar-highlight), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+    border-left: 3px solid var(--sidebar-accent-color) !important;
+    letter-spacing: 0.7px !important;
+}
+
+/* Animação do efeito de brilho deslizante no hover */
+[data-testid="stSidebar"] button:hover::before {
+    left: 200% !important;
+    opacity: 1 !important;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1) !important;
+}
+
+/* Ajuste da camada de brilho superior no hover */
+[data-testid="stSidebar"] button:hover::after {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.25) 0%, rgba(0, 94, 242, 0.1) 40%, rgba(255, 255, 255, 0) 60%, rgba(0, 94, 242, 0.1) 80%, rgba(255, 255, 255, 0.25) 100%) !important;
+}
+
+/* Estado ativo (quando clicado) para botões */
+[data-testid="stSidebar"] button:active {
+    /* Efeito de pressionar para baixo */
+    transform: translateX(3px) translateY(2px) scale(0.98) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), inset 0 1px 5px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.1s ease-out !important;
+    /* Cor de fundo mais intensa */
+    background: linear-gradient(110deg, rgba(0, 65, 170, 0.4) 0%, rgba(0, 94, 242, 0.35) 50%, rgba(0, 65, 170, 0.4) 100%) !important;
+}
+
+/* Estilo para botão da página ativa */
+[data-testid="stSidebar"] button.active-page {
+    /* Fundo destacado */
+    background: linear-gradient(110deg, rgba(0, 65, 170, 0.35) 0%, rgba(0, 94, 242, 0.25) 50%, rgba(0, 65, 170, 0.35) 100%) !important;
+    color: #ffffff !important;
+    /* Borda de destaque lateral */
+    border-left: 3px solid var(--sidebar-accent-color) !important;
+    /* Sombra de destaque */
+    box-shadow: 0 4px 12px var(--sidebar-shadow), 0 0 15px var(--sidebar-highlight), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.7px !important;
+    text-shadow: 0 0 10px rgba(0, 94, 242, 0.5);
+    /* Animação de pulsação para indicar página ativa */
+    animation: activePulse 3s infinite ease-in-out !important;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO DO APP PRINCIPAL
+   ========================================================================== */
+/* Estilo para o container principal do aplicativo */
+.stApp {
+    /* Imagem de fundo principal */
+    background-image: var(--background-image-url);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: right 300px center; /* Garantindo que começa afastada do sidebar */
+    background-color: #005df234;
+    background-attachment: fixed; /* Fixo para movimento mais suave */
+    
+    /* Aplicar a animação de flutuação à imagem de fundo */
+    animation: background-logo-float 140s cubic-bezier(0.4, 0.0, 0.2, 1.0) infinite;
+}
+
+/* Camada de sobreposição para o fundo */
+.stApp::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Camada semitransparente para melhorar legibilidade do conteúdo */
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: -1;
+}
+
+/* Estilo para logo principal no app */
+.main-logo { 
+    max-width: 200px; 
+}
+
+/* Ajuste do container principal de conteúdo */
+.block-container {
+    max-width: 1200px !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    /* Reduz a largura mínima da barra lateral */
+    [data-testid="stSidebar"] { 
+        min-width: 240px !important; 
+    }
+    
+    /* Reduz o tamanho de elementos na barra lateral */
+    [data-testid="stSidebar"] button,
+    .sidebar-title,
+    .sidebar-logo-sm,
+    .sidebar-logo-lg {
+        font-size: 0.9rem !important;
+        height: 40px !important;
+        max-width: 200px;
+    }
+    
+    /* Ajuste específico para o logo pequeno */
+    .sidebar-logo-sm { 
+        max-width: 50px; 
+    }
+}
+
+/* ==========================================================================
+   BOTÃO DE COLAPSO DA SIDEBAR
+   ========================================================================== */
+/* Estilização do botão de colapso da barra lateral */
+section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"],
+section[data-testid="stSidebar"]:hover [data-testid="stSidebarCollapseButton"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    left: auto !important;
+    right: 5px !important;
+    transition: none !important;
+    position: absolute !important;
+    z-index: 100 !important;
+}
+
+/* Estilo para o container interno do botão de colapso */
+section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] > div {
+    background-color: rgba(0, 94, 242, 0.8) !important;
+    border-radius: 50% !important;
+    color: white !important;
+    box-shadow: 0 0 10px rgba(0, 94, 242, 0.5) !important;
+}
+
+/* Efeito hover para o botão de colapso */
+section[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"]:hover > div {
+    background-color: rgba(0, 94, 242, 1) !important;
+    box-shadow: 0 0 15px rgba(0, 94, 242, 0.8) !important;
+    transform: scale(1.1) !important;
+}
+
+/* Overlay de carregamento de página */
+.page-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 17, 59, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: opacity 0.3s ease;
+  }
+  
+  .page-loading-spinner {
+    width: 80px;
+    height: 80px;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: #005ef2;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 20px rgba(0, 94, 242, 0.5);
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+/* ==========================================================================
+   BOTÃO DE COLAPSO DA SIDEBAR (VERSÃO UNIVERSAL)
+   ========================================================================== */
+/* Estilo para o botão de colapso quando a sidebar está escondida */
+[data-testid="stSidebarCollapsedControl"] {
+    background: linear-gradient(135deg, #05113B 0%, #005EF2 100%);
+    border-radius: 0 12px 12px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 2px 2px 10px rgba(0, 94, 242, 0.3);
+    transition: all 0.3s ease;
+    position: fixed !important;
+    left: 0 !important;
+    top: 15px !important;
+    transform: none !important;
+    z-index: 1000 !important;
+    padding: 3px 6px !important;
+    height: auto !important;
+    width: 40px !important;
+}
+
+/* Container do botão */
+[data-testid="stSidebarCollapsedControl"] .st-emotion-cache-1y9tyez,
+[data-testid="stSidebarCollapsedControl"] div[class*="st-emotion-cache"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 2px !important;
+}
+
+/* Botão propriamente dito */
+[data-testid="stSidebarCollapsedControl"] button,
+[data-testid="stSidebarCollapsedControl"] button[kind="headerNoPadding"] {
+    color: white !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    transition: transform 0.2s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Ícone dentro do botão */
+[data-testid="stSidebarCollapsedControl"] svg {
+    fill: white !important;
+    width: 16px !important;
+    height: 16px !important;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Efeitos hover */
+[data-testid="stSidebarCollapsedControl"]:hover {
+    box-shadow: 2px 2px 15px rgba(0, 94, 242, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+[data-testid="stSidebarCollapsedControl"]:hover button {
+    transform: scale(1.1) !important;
+}
+
+/* Efeito de brilho pulsante mais sutil */
+@keyframes sidebar-button-pulse {
+    0%, 100% { box-shadow: 2px 2px 10px rgba(0, 94, 242, 0.3); }
+    50% { box-shadow: 2px 2px 15px rgba(0, 94, 242, 0.5); }
+}
+
+[data-testid="stSidebarCollapsedControl"] {
+    animation: sidebar-button-pulse 3s infinite ease-in-out;
+}
+

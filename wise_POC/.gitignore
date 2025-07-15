@@ -1,0 +1,81 @@
+# Ambiente virtual
+venv/
+env/
+ENV/
+.venv/
+
+# Arquivos de ambiente e credenciais
+.env
+.env.*
+!.env.example
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Arquivos de distribuição / empacotamento
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Arquivos Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Arquivos específicos do Streamlit
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# Arquivos temporários
+*.tmp
+*.bak
+temp/
+.temp/
+
+# IDE e editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.spyderproject
+.spyproject
+.ropeproject
+.project
+.pydevproject
+
+# Arquivos de banco de dados
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos de modelo de IA baixados
+models/
+.vector_cache/
+sentence-transformers/
+
+# Arquivos específicos do projeto
+debug_output/
+test_results/
+.local/
+
+# Arquivos de diagnóstico
+diagnose_*.py
+test_*.py

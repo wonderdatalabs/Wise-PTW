@@ -1,0 +1,185 @@
+/* Estilizando o título da página */
+.faq-titulo {
+    text-align: center;
+    color: var(--config-text-light);
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    margin-bottom: 0 !important;
+    padding-bottom: 0.5rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 94, 242, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+/* Estilizando o divisor após o título */
+.faq-divider {
+    height: 3px;
+    background: linear-gradient(90deg, rgba(0, 94, 242, 0.1), rgba(7, 47, 226, 0.8), rgba(0, 94, 242, 0.1));
+    margin: 0.25rem auto 2rem auto;
+    width: 70%;
+    border-radius: 3px;
+    box-shadow: 0 2px 10px rgba(0, 94, 242, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho animado no divisor */
+.faq-divider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shine-effect 3s infinite linear;
+}
+
+@keyframes shine-effect {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* Seletor ultra-específico para os botões de FAQ */
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"],
+.faq-container button[data-testid="stBaseButton-secondary"] {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    padding: 1rem 1.5rem !important;
+    margin-bottom: 0.8rem;
+    color: #FFFFFF !important;
+    background: linear-gradient(135deg, #05113b, #005EF2) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.3s ease-out !important;
+    cursor: pointer;
+    text-align: left !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Seta à direita - seletor específico */
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"]::after,
+.faq-container button[data-testid="stBaseButton-secondary"]::after {
+    content: "→";
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Efeito hover - seletor específico */
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"]:hover,
+.faq-container button[data-testid="stBaseButton-secondary"]:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 15px rgba(0, 94, 242, 0.4) !important;
+    background: linear-gradient(135deg, #072FE2, #00A3FF) !important;
+    color: #FFFFFF !important;
+}
+
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"]:hover::after,
+.faq-container button[data-testid="stBaseButton-secondary"]:hover::after {
+    transform: translate(5px, -50%);
+    opacity: 1;
+}
+
+/* Efeito de clique melhorado - seletor específico */
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"]:active,
+.faq-container button[data-testid="stBaseButton-secondary"]:active {
+    transform: translateY(2px) scale(0.98) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.08s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    background: linear-gradient(135deg, #072FE2, #005EF2) !important;
+}
+
+/* Efeito na seta ao clicar - seletor específico */
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"]:active::after,
+.faq-container button[data-testid="stBaseButton-secondary"]:active::after {
+    transform: translate(3px, -50%) scale(1.2);
+    opacity: 1;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    transition: all 0.08s ease;
+}
+
+/* Efeito de luz ao passar o mouse - seletor específico */
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"]::before,
+.faq-container button[data-testid="stBaseButton-secondary"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+    transition: left 0.7s ease;
+    z-index: 1;
+}
+
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"]:hover::before,
+.faq-container button[data-testid="stBaseButton-secondary"]:hover::before {
+    left: 100%;
+}
+
+/* Flash de luz ao clicar - seletor específico */
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"]:active::before,
+.faq-container button[data-testid="stBaseButton-secondary"]:active::before {
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.25), 
+        transparent);
+    left: 100%;
+    transition: left 0.3s ease;
+}
+
+/* Corrigindo o texto dentro dos botões para não ficar vermelho - seletor específico */
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"] p,
+.stElementContainer[class*="st-key-faq_"] .stButton button[data-testid="stBaseButton-secondary"] div,
+.faq-container button[data-testid="stBaseButton-secondary"] p,
+.faq-container button[data-testid="stBaseButton-secondary"] div {
+    color: #FFFFFF !important;
+}
+
+/* Style específico para a classe do texto */
+.st-emotion-cache-10c9vv9 {
+    color: #FFFFFF !important;
+}
+
+/* Animação para entrada das perguntas usando seletores específicos */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stElementContainer[class*="st-key-faq_"] {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+/* Delay sequencial para cada botão */
+.st-key-faq_0 { animation-delay: 0.1s; }
+.st-key-faq_1 { animation-delay: 0.2s; }
+.st-key-faq_2 { animation-delay: 0.3s; }
+.st-key-faq_3 { animation-delay: 0.4s; }
+.st-key-faq_4 { animation-delay: 0.5s; }
+.st-key-faq_5 { animation-delay: 0.6s; }
+.st-key-faq_6 { animation-delay: 0.7s; }
+.st-key-faq_7 { animation-delay: 0.8s; }
+.st-key-faq_8 { animation-delay: 0.9s; }
+.st-key-faq_9 { animation-delay: 1.0s; }

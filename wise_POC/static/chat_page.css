@@ -1,0 +1,756 @@
+/* ===== BUTTON STYLING ===== */
+/* Base button styles with gradient background */
+.st-emotion-cache-1779v62, .st-emotion-cache-19rxjzo, .st-emotion-cache-1cpxm7c,
+button[kind="primary"], button[data-testid="baseButton-primary"],
+.stButton > button[data-testid="baseButton-primary"],
+.wonder-chat-clear-button button,
+div[data-testid="column"]:last-child .stButton > button {
+    background: linear-gradient(135deg, #05113B 0%, #005EF2 100%) !important;
+    color: #FFFFFF !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 0.6rem 1.8rem !important;
+    box-shadow: 0 4px 12px rgba(0, 94, 242, 0.3) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    text-shadow: 0 1px 2px rgba(5, 17, 59, 0.5) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+}
+
+/* Common pseudo-element for effects */
+.st-emotion-cache-1779v62::before, .st-emotion-cache-19rxjzo::before, .st-emotion-cache-1cpxm7c::before,
+button[kind="primary"]::before, button[data-testid="baseButton-primary"]::before,
+.stButton > button[data-testid="baseButton-primary"]::before,
+.wonder-chat-clear-button button::before,
+div[data-testid="column"]:last-child .stButton > button::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -50% !important;
+    left: -50% !important;
+    width: 200% !important;
+    height: 200% !important;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+    transform: rotate(45deg) !important;
+    opacity: 0 !important;
+    transition: opacity 0.6s !important;
+}
+
+/* Button states (hover, active) */
+.st-emotion-cache-1779v62:hover, .st-emotion-cache-19rxjzo:hover, .st-emotion-cache-1cpxm7c:hover,
+button[kind="primary"]:hover, button[data-testid="baseButton-primary"]:hover,
+.stButton > button[data-testid="baseButton-primary"]:hover,
+.wonder-chat-clear-button button:hover,
+div[data-testid="column"]:last-child .stButton > button:hover {
+    background: linear-gradient(135deg, #05113B 20%, #005EF2 80%) !important;
+    box-shadow: 0 8px 20px rgba(0, 94, 242, 0.5), 0 0 15px rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-4px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Activate glow animation on hover */
+.st-emotion-cache-1779v62:hover::before, .st-emotion-cache-19rxjzo:hover::before, .st-emotion-cache-1cpxm7c:hover::before,
+button[kind="primary"]:hover::before, button[data-testid="baseButton-primary"]:hover::before,
+.stButton > button[data-testid="baseButton-primary"]:hover::before,
+.wonder-chat-clear-button button:hover::before,
+div[data-testid="column"]:last-child .stButton > button:hover::before {
+    opacity: 1 !important;
+    animation: shine 1.5s infinite !important;
+}
+
+/* Button active/pressed state */
+.st-emotion-cache-1779v62:active, .st-emotion-cache-19rxjzo:active, .st-emotion-cache-1cpxm7c:active,
+button[kind="primary"]:active, button[data-testid="baseButton-primary"]:active,
+.stButton > button[data-testid="baseButton-primary"]:active,
+.wonder-chat-clear-button button:active,
+div[data-testid="column"]:last-child .stButton > button:active {
+    transform: translateY(2px) !important;
+    box-shadow: 0 3px 10px rgba(0, 94, 242, 0.4), inset 0 2px 10px rgba(5, 17, 59, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Animations */
+@keyframes shine {
+    0% { left: -100%; opacity: 0; }
+    20% { opacity: 0.2; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmerEffect {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes ripple {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(20); opacity: 0; }
+}
+
+@keyframes typingPulse {
+    0% { box-shadow: 0 5px 15px rgba(0, 94, 242, 0.3); transform: scale(1); }
+    50% { box-shadow: 0 5px 25px rgba(0, 94, 242, 0.5); transform: scale(1.03); }
+    100% { box-shadow: 0 5px 15px rgba(0, 94, 242, 0.3); transform: scale(1); }
+}
+
+@keyframes typingEllipsis {
+    0% { content: ""; }
+    25% { content: "."; }
+    50% { content: ".."; }
+    75% { content: "..."; }
+    100% { content: ""; }
+}
+
+@keyframes userMessageShine {
+    0% { left: -150%; opacity: 0; }
+    20% { opacity: 0.6; }
+    40% { opacity: 0.3; }
+    60% { opacity: 0.6; }
+    100% { left: 150%; opacity: 0; }
+}
+
+@keyframes rotateBorder {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* ===== BACKGROUND CONTAINER STYLING ===== */
+.st-emotion-cache-128upt6 {
+    background: linear-gradient(135deg, #05113B 0%, #0A1F5A 50%, #005EF2 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0, 94, 242, 0.2);
+}
+
+.st-emotion-cache-128upt6::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.08) 0%, rgba(5, 17, 59, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.st-emotion-cache-128upt6::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: linear-gradient(45deg, transparent 80%, rgba(0, 94, 242, 0.1) 85%, transparent 90%);
+    animation: shimmerEffect 8s infinite linear;
+    z-index: 0;
+}
+
+/* ===== TEXT INPUT FIELD STYLING - TEMA INDEPENDENTE ===== */
+/* Container principal do chat input */
+[data-testid="stChatInput"], .st-emotion-cache-1eeryuo, .e1togvvn0 {
+    margin-bottom: 5px !important;
+}
+
+/* Container do wrapper do input */
+[data-testid="stChatInput"] > div, .st-emotion-cache-x1bvup,
+.e1togvvn1, .st-emotion-cache-1eeryuo > div {
+    background-color: white !important;
+    border: 2px solid rgba(0, 94, 242, 0.2) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 20px rgba(5, 17, 59, 0.05) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    padding: 0 30px 0 5px !important;
+    position: relative !important;
+    margin-bottom: 5px !important;
+    /* Forçar tema claro */
+    color-scheme: light !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+}
+
+/* Div containers for input components */
+[data-testid="stChatInput"] [data-baseweb="textarea"],
+.st-emotion-cache-1eeryuo [data-baseweb="textarea"],
+div[class*="st-ae st-af st-ag st-ah st-ai st-aj"],
+[data-testid="stChatInput"] [data-baseweb="base-input"],
+.st-emotion-cache-1eeryuo [data-baseweb="base-input"],
+div[class*="st-af st-ah st-b6 st-ar st-as"] {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/* Textarea styling */
+[data-testid="stChatInput"] textarea, [data-testid="stChatInputTextArea"],
+.st-emotion-cache-1eeryuo textarea, textarea[class*="st-ae st-be st-ai st-aj"] {
+    background-color: transparent !important;
+    color: #131313 !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 16px !important;
+    padding: 12px !important;
+    border-radius: 10px !important;
+    letter-spacing: 0.3px !important;
+    font-weight: 400 !important;
+    /* Neutralizar efeitos de tema escuro */
+    -webkit-text-fill-color: #131313 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Corrigir a visibilidade do cursor em fundo escuro */
+[data-testid="stChatInput"] textarea, 
+[data-testid="stChatInputTextArea"],
+.st-emotion-cache-1eeryuo textarea, 
+textarea[class*="st-ae st-be st-ai st-aj"] {
+    /* Manter estilos existentes e adicionar: */
+    caret-color: #05113B !important; /* Cursor azul brilhante visível em qualquer tema */
+}
+
+/* Focus states */
+[data-testid="stChatInput"]:focus-within > div,
+[data-testid="stChatInput"] div:focus-within,
+.st-emotion-cache-1eeryuo:focus-within > div,
+.st-emotion-cache-x1bvup:focus-within,
+.e1togvvn1:focus-within,
+div[data-focused="true"] {
+    border-color: #005Ef2 !important;
+    box-shadow: 0 8px 25px rgba(0, 94, 242, 0.12) !important;
+    transform: translateY(-2px) !important;
+    outline: none !important;
+}
+
+[data-testid="stChatInput"] textarea:focus,
+[data-testid="stChatInputTextArea"]:focus,
+.st-emotion-cache-1eeryuo textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    -webkit-text-fill-color: #131313 !important;
+    color: #131313 !important;
+}
+
+/* Placeholder styling */
+[data-testid="stChatInput"] textarea::placeholder,
+[data-testid="stChatInputTextArea"]::placeholder,
+.st-emotion-cache-1eeryuo textarea::placeholder,
+textarea[placeholder]::placeholder {
+    color: #9aa0b9 !important;
+    font-style: italic !important;
+    opacity: 0.7 !important;
+    -webkit-text-fill-color: #9aa0b9 !important;
+}
+
+/* Hide input instructions */
+.st-emotion-cache-12o5wl7, .e1togvvn4 {
+    display: none !important;
+}
+
+/* ===== SEND BUTTON STYLING ===== */
+.stChatInput button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 36px !important;
+    width: 36px !important;
+    margin: auto !important;
+    padding: 15px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+}
+  
+/* Icon inside send button */
+.stChatInput button svg {
+    fill: #005Ef2 !important;
+    height: 40px !important;
+    width: 36px !important;
+    transition: all 0.3s ease !important;
+    z-index: 2 !important;
+}
+  
+/* Ripple effect on click */
+.stChatInput button::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 5px !important;
+    height: 5px !important;
+    background: rgba(0, 94, 242, 0.3) !important;
+    opacity: 0 !important;
+    border-radius: 100% !important;
+    transform: scale(1) !important;
+    transform-origin: 50% 50% !important;
+}
+  
+.stChatInput button:active::after {
+    animation: ripple 0.6s ease-out !important;
+}
+  
+/* Hover effect on send button icon */
+.stChatInput button:hover svg {
+    fill: #05113B !important;
+    transform: scale(1.1) !important;
+}
+
+/* ===== CHAT MESSAGES STYLING ===== */
+/* Main chat container */
+.wonder-chat-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.wonder-chat-messages {
+    padding: 10px 5px;
+    overflow-y: auto;
+    position: relative;
+    text-align: left;
+}
+
+/* Common message styles */
+.wonder-chat-user-message,
+.wonder-chat-assistant-message {
+    position: relative;
+    margin: 12px 0;
+    padding: 16px 20px;
+    line-height: 1.5;
+    border-radius: 16px;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    text-align: left;
+    max-width: 92%;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Ensure visibility */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1000 !important;
+    margin-right: auto;
+    margin-left: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+/* 3D depth effect common to both message types */
+.wonder-chat-user-message::before,
+.wonder-chat-assistant-message::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    transform: translateZ(-10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 14px;
+}
+
+/* User Message - Blue glass style */
+.wonder-chat-user-message {
+    background: linear-gradient(135deg, rgba(5, 17, 59, 1) 0%, rgba(0, 94, 242, 0.9) 100%);
+    border: 1px solid rgba(242, 244, 247, 0.3);
+    color: white;
+    box-shadow: 
+        0 10px 20px rgba(0, 0, 0, 0.12),
+        0 5px 15px rgba(0, 94, 242, 0.1),
+        inset 0 0 15px rgba(0, 94, 242, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.wonder-chat-user-message::before {
+    background: linear-gradient(45deg, rgba(0, 93, 242, 0.178) 0%, rgba(10, 32, 110, 0.096) 100%);
+    box-shadow: 0 5px 15px rgba(0, 94, 242, 0.2);
+    opacity: 0.7;
+}
+
+/* Inner glow effect for user message */
+.wonder-chat-user-message::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    animation: userMessageShine 6s infinite;
+}
+
+/* Assistant Message - Tech glass gradient style */
+.wonder-chat-assistant-message {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.699) 0%, rgba(240, 242, 255, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #05113B;
+    margin-right: auto;
+    margin-left: 5px; 
+    box-shadow: 
+        0 10px 30px rgba(5, 17, 59, 0.07),
+        0 5px 15px rgba(0, 0, 0, 0.04),
+        inset 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: translateZ(0);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.wonder-chat-assistant-message::before {
+    background: linear-gradient(45deg, rgba(0, 94, 242, 0.3) 0%, rgba(5, 17, 59, 0.2) 100%);
+    box-shadow: 0 5px 10px rgba(0, 94, 242, 0.15);
+    border-radius: 14px;
+    opacity: 0.1;
+}
+
+/* Border highlight effect for assistant */
+.wonder-chat-assistant-message::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(5, 17, 59, 0.1), rgba(0, 94, 242, 0.1), rgba(5, 17, 59, 0.1));
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover effects for messages */
+.wonder-chat-user-message:hover,
+.wonder-chat-assistant-message:hover {
+    /* Remover efeito 3D que causa perda de nitidez */
+    transform: translateY(-4px) translateX(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.wonder-chat-user-message:hover {
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.15),
+        0 8px 20px rgba(0, 94, 242, 0.2),
+        inset 0 0 20px rgba(0, 94, 242, 0.3);
+}
+
+.wonder-chat-assistant-message:hover {
+    box-shadow: 
+        0 15px 35px rgba(5, 17, 59, 0.1),
+        0 8px 20px rgba(0, 0, 0, 0.06),
+        inset 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+.wonder-chat-user-message:hover::after {
+    animation-duration: 2s;
+}
+
+.wonder-chat-assistant-message:hover::after {
+    opacity: 0.3;
+    animation: rotateBorder 3s infinite linear;
+}
+
+/* Typing indicator with pulsating effect */
+.wonder-chat-typing-indicator {
+    position: relative !important;
+    display: inline-block !important;
+    background-color: #005Ef2 !important;
+    color: white !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    padding: 8px 20px !important;
+    border-radius: 30px !important;
+    margin: 10px 0 !important;
+    box-shadow: 0 5px 15px rgba(0, 94, 242, 0.3) !important;
+    animation: typingPulse 2s infinite ease-in-out !important;
+}
+
+/* Animated dots for typing indicator */
+.wonder-chat-typing-indicator::after {
+    content: "" !important;
+    display: inline-block !important;
+    width: 24px !important;
+    text-align: left !important;
+    animation: typingEllipsis 1.5s infinite !important;
+    font-weight: bold !important;
+}
+
+/* Special animations */
+@keyframes typingPulse {
+    0% { box-shadow: 0 5px 15px rgba(0, 94, 242, 0.3); transform: scale(1); }
+    50% { box-shadow: 0 5px 25px rgba(0, 94, 242, 0.5); transform: scale(1.03); }
+    100% { box-shadow: 0 5px 15px rgba(0, 94, 242, 0.3); transform: scale(1); }
+}
+
+@keyframes typingEllipsis {
+    0% { content: ""; }
+    25% { content: "."; }
+    50% { content: ".."; }
+    75% { content: "..."; }
+    100% { content: ""; }
+}
+
+@keyframes userMessageShine {
+    0% { left: -150%; opacity: 0; }
+    20% { opacity: 0.6; }
+    40% { opacity: 0.3; }
+    60% { opacity: 0.6; }
+    100% { left: 150%; opacity: 0; }
+}
+
+@keyframes rotateBorder {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .wonder-chat-user-message,
+    .wonder-chat-assistant-message {
+        max-width: 85%;
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+}
+
+/* Additional styling for Streamlit containers */
+[data-testid="stChatMessage"] {
+    backdrop-filter: blur(0); 
+    background: transparent !important;
+}
+
+[data-testid="stChatMessageContent"] {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Avatar styling */
+.st-emotion-cache-1dgsum0 {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #05113B 0%, #005EF2 100%);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    transform: scale(1);
+}
+
+.st-emotion-cache-1dgsum0:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(0, 94, 242, 0.3);
+}
+
+/* Smooth scrolling effect */
+.wonder-chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.wonder-chat-messages::-webkit-scrollbar-track {
+    background: rgba(240, 242, 255, 0.2);
+    border-radius: 10px;
+}
+
+.wonder-chat-messages::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #05113B 0%, #005EF2 100%);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== CHAT WELCOME SCREEN ===== */
+.wonder-chat-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem 3rem 1rem;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Adicionar uma sutil divisão visual quando houver mensagens */
+.wonder-chat-messages-section + .wonder-chat-welcome::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.wonder-chat-welcome-icon {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(5, 17, 59, 0.05) 0%, rgba(0, 94, 242, 0.15) 100%);
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(0, 94, 242, 0.1), inset 0 5px 10px rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Quando houver mensagens, reduzir o tamanho do header e da animação */
+.wonder-chat-messages-section ~ .wonder-chat-welcome .wonder-chat-welcome-icon {
+    transform: scale(0.85);
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.wonder-chat-messages-section {
+    position: relative;
+    padding-top: 1rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Ajuste de tamanho para o título quando houver mensagens */
+.wonder-chat-messages-section ~ .wonder-chat-welcome .wonder-chat-welcome-title {
+    font-size: 1.9rem;
+    margin-top: 0.2rem;
+}
+
+.wonder-chat-messages-section ~ .wonder-chat-welcome .wonder-chat-welcome-message {
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0.6rem 0 1.5rem 0;
+}
+
+.wonder-chat-messages-section ~ .wonder-chat-welcome .wonder-chat-welcome-divider {
+    width: 60%;
+    margin: 0.25rem auto 1rem auto;
+}
+
+.wonder-chat-welcome-title {
+    color: var(--config-text-light);
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    margin-bottom: 0 !important;
+    padding-bottom: 0.5rem;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 94, 242, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.wonder-chat-welcome-divider {
+    height: 3px;
+    background: linear-gradient(90deg, rgba(0, 94, 242, 0.1), rgba(7, 47, 226, 0.8), rgba(0, 94, 242, 0.1));
+    margin: 0.25rem auto 1.5rem auto;
+    width: 70%;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 94, 242, 0.2);
+}
+
+.wonder-chat-welcome-message {
+    max-width: 700px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 1rem 0 2rem 0;
+    color: var(--config-text-light);
+    opacity: 0.95;
+}
+
+.wonder-chat-welcome-examples {
+    margin-top: 1rem;
+    max-width: 750px;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(5, 17, 59, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.8s ease-out 0.3s backwards;
+}
+
+.wonder-chat-welcome-examples-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--config-text-light);
+    text-align: left;
+}
+
+.wonder-chat-welcome-examples-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.wonder-chat-welcome-example-item {
+    background: linear-gradient(135deg, rgba(0, 94, 242, 0.1) 0%, rgba(5, 17, 59, 0.2) 100%);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8f9fa;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(5, 17, 59, 0.1);
+}
+
+.wonder-chat-welcome-example-item:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(0, 94, 242, 0.2) 0%, rgba(5, 17, 59, 0.3) 100%);
+    box-shadow: 0 6px 20px rgba(0, 94, 242, 0.15);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive styles for welcome screen */
+@media (max-width: 768px) {
+    .wonder-chat-welcome-title {
+        font-size: 1.8rem;
+    }
+    
+    .wonder-chat-welcome-message {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .wonder-chat-welcome-examples-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+

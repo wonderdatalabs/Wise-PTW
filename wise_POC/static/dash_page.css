@@ -1,0 +1,49 @@
+/* 
+ * DASHBOARD PAGE - DESIGN PREMIUM
+ * Estilização específica para a página de dashboard
+ * Todas as classes começam com 'dashboard-' para evitar conflitos com outras páginas
+ */
+
+/* ===== ESTILIZAÇÃO GERAL DA PÁGINA DE DASHBOARD ===== */
+.dashboard-titulo {
+  text-align: center;
+  color: var(--config-text-light);
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  margin-bottom: 0 !important;
+  padding-bottom: 0.5rem;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0, 94, 242, 0.5);
+  position: relative;
+  z-index: 2;
+}
+
+/* Estilizando o divisor após o título */
+.dashboard-divider {
+  height: 3px;
+  background: linear-gradient(90deg, rgba(0, 94, 242, 0.1), rgba(7, 47, 226, 0.8), rgba(0, 94, 242, 0.1));
+  margin: 0.25rem auto 2rem auto;
+  width: 70%;
+  border-radius: 3px;
+  box-shadow: 0 2px 10px rgba(0, 94, 242, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho animado no divisor */
+.dashboard-divider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine-effect 3s infinite linear;
+}
+
+@keyframes shine-effect {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
